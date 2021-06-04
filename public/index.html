@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>STARTTRAVEL</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i%7CMerriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Font Awesome Stylesheet -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Custom Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" id="cpswitch" href="css/orange.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Owl Carousel Stylesheet -->
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/owl.theme.css">
+
+    <!-- Flex Slider Stylesheet -->
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" />
+
+    <!--Date-Picker Stylesheet-->
+    <link rel="stylesheet" href="css/datepicker.css">
+
+    <!-- Magnific Gallery -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <script src="js/index.js"></script>
+    <script type="text/javascript">
+        function show2(){
+          document.getElementById("submit").style.display = "none";
+          document.getElementById("submit2").style.display = "block";
+        }
+            function show() {
+              var user = document.getElementById('user').value;
+      var email = document.getElementById('email').value;
+      var pass = document.getElementById('pass').value;
+      var repass = document.getElementById('repass').value;
+      if (user.length < 3) {
+          alert("Username must contain at least 3 characters!");
+          document.SignIn.user.focus();
+      } else if (pass.length == 0) {
+          alert("Password cannot be empty!");
+          document.SignIn.pass.focus();
+      } else if (pass != repass) {
+          alert(" Password must match!");
+          document.SignIn.pass.focus();
+      } else if (email.length == 0) {
+          alert("Wrong mail format!");
+          document.SignIn.email.focus();
+      } else {
+          document.getElementById("number").style.display = "block";
+      document.getElementById("register").style.display = "none";
+      document.getElementById("submit").style.display = "block";
+          }
+      }
+      var code;
+      $(document).ready(function(){
+      $('#register').click(function(){
+          var txt= $('#email').val();
+          alert("Please check the erification code !!!");
+          $.post('sendmail.php',{data: txt},function(data){
+           code=data;
+          })
+      })
+      $('#submit2').click(function(){
+              alert("Please wait for the admin to confirm !!!");
+  })
+      $('#submit').click(function(){
+          var code2= $('#number').val();
+          if(code==code2){
+              alert("Enter the code successfully. Please submit information!!!");
+              show2();
+  }
+          else{
+  alert("The verification code is wrong. Please re-enter !!!");
+  document.SignIn.user.focus();
+          }
+      })
+  })
+      </script>
+    <style>
+        
+        .col-12.mt-3 {
+            padding: 10px;
+        }
+
+        #hot {
+            display: none;
+        }
+
+        #offer {
+            display: none;
+        }
+
+        #cruise {
+            display: none;
+        }
+
+        #sport {
+            display: none;
+        }
+
+        #capital {
+            display: none;
+        }
+
+        #blog {
+            display: none;
+        }
+
+        #account {
+            display: none;
+        }
+        #cart {
+            display: none;
+        }
+      .add {
+            display: flex;
+        }
+
+        #home-links {
+            margin: 0 0 0 30000px;
+            position: absolute;
+            background-color: white;
+        }
+         #number {
+            display: none;
+        }
+        
+        #submit {
+            display: none;
+        }
+        #submit2 {
+            display: none;
+        }
+       td {
+            vertical-align: middle;
+        }
+
+        @media screen and (max-width: 600px) {
+            table#cart tbody td .form-control {
+                width: 20%;
+                display: inline !important;
+            }
+
+            .actions .btn {
+                width: 36%;
+                margin: 1.5em 0;
+            }
+
+            .actions .btn-info {
+                float: left;
+            }
+
+            .actions .btn-danger {
+                float: right;
+            }
+
+            table#cart thead {
+                display: none;
+            }
+
+            table#cart tbody td {
+                display: block;
+                padding: .6rem;
+                min-width: 320px;
+            }
+
+            table#cart tbody tr td:first-child {
+                background: #333;
+                color: #fff;
+            }
+
+            table#cart tbody td:before {
+                content: attr(data-th);
+                font-weight: bold;
+                display: inline-block;
+                width: 8rem;
+            }
+
+            table#cart tfoot td {
+                display: block;
+            }
+
+            table#cart tfoot td .btn {
+                display: block;
+            }
+        }
+        td {
+            vertical-align: middle;
+        }
+
+        @media screen and (max-width: 600px) {
+            table#cart tbody td .form-control {
+                width: 20%;
+                display: inline !important;
+            }
+
+            .actions .btn {
+                width: 36%;
+                margin: 1.5em 0;
+            }
+
+            .actions .btn-info {
+                float: left;
+            }
+
+            .actions .btn-danger {
+                float: right;
+            }
+
+            table#cart thead {
+                display: none;
+            }
+
+            table#cart tbody td {
+                display: block;
+                padding: .6rem;
+                min-width: 320px;
+            }
+
+            table#cart tbody tr td:first-child {
+                background: #333;
+                color: #fff;
+            }
+
+            table#cart tbody td:before {
+                content: attr(data-th);
+                font-weight: bold;
+                display: inline-block;
+                width: 8rem;
+            }
+
+            table#cart tfoot td {
+                display: block;
+            }
+
+            table#cart tfoot td .btn {
+                display: block;
+            }
+        }
+        #nut1 {
+  background-color: green;
+  color: black;
+  padding: 16px 20px;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+  display:block;
+  border-radius:10px;
+}
+#nut2 {
+  background-color: red;
+  color:black;
+  display:none;
+  padding: 16px 20px;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+  border-radius:10px;
+}
+.usermess {
+  background-color:wheat;
+  color:black;
+  padding: 16px 20px;
+  margin:0 0 10px 0;
+  bottom: 23px;
+  width: 100%;
+  border: solid black;
+  border-radius: 10px;
+}
+#boxmess{
+  margin: 20px 20px 20px 20px;
+  position: fixed;
+  right: 0px;
+  padding: 16px 20px;
+  z-index: 9;
+}
+.iconsss {
+  color:black;
+  padding: 16px 20px;
+  margin:0 0 0 30px;
+  font-size: 15px;
+}
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 0px;
+  padding: 16px 20px;
+  z-index: 9;
+}
+.chat-popup2 {
+  display: flex;
+  position: fixed;
+  bottom: 80px;
+  right: 0px;
+  padding: 16px 20px;
+  z-index: 9;
+}
+.mess{
+  width: 70%;
+  padding: 15px;
+  margin: 5px 0 0px 0;
+  border: none;
+  border-radius: 20px;
+  background: wheat;
+  resize: none;
+  height: 50px;
+}
+
+#test{
+            width:100%;
+            height:300px;
+            overflow-x:hidden;
+            overflow-y:auto;
+}
+.tt2{
+    width: 70%;
+  font-size: 10px;
+  margin: 0px 0 22px 130px;
+  border: none;
+}
+.tt{
+    width: 70%;
+  font-size: 10px;
+  margin: 0px 0 17px 10px;
+  border: none;
+}
+
+.ttad2{
+    width: 70%;
+  font-size: 10px;
+  margin: 0px 0 17px 10px;
+  border: none;
+}
+.ttad{
+    width: 70%;
+  font-size: 10px;
+  margin: 0px 0 22px 130px;
+  border: none;
+}
+
+
+
+.mess2{
+  width: 70%;
+  padding: 15px;
+  margin: 5px 0 0px 80px;
+  border: none;
+  border-radius: 20px;
+  background: dodgerblue;
+  resize: none;
+  height: 50px;
+}
+.form-container {
+  
+  max-width: 300px;
+  padding: 10px;
+  background-color: rgb(218, 194, 194);
+  border-radius: 20px;
+}
+
+.sub{
+    display:flex;
+}
+/* Full-width textarea */
+.form-container #messa {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  border-radius: 10px;
+  background: #f1f1f1;
+  resize: none;
+  height: 50px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btnbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 5px 0 22px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100px;
+  height:50px;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+    </style>
+  </head>
+
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+      <button type="button" class="cancel" id="nut2" onclick="closeForm()">Close</button>
+      <button class="open" onclick="openForm()" id="nut1">Chat</button>
+ 
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+  document.getElementById("nut2").style.display = "block";
+  document.getElementById("nut1").style.display = "none";
+  
+  
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+  document.getElementById("nut1").style.display = "block";
+  document.getElementById("nut2").style.display = "none";
+}
+</script>
+    <div id="root"></div>
+  </body>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.flexslider.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/custom-navigation.js"></script>
+  <script src="js/custom-flex.js"></script>
+  <script src="js/custom-owl.js"></script>
+  <script src="js/custom-date-picker.js"></script>
+  <script src="js/custom-video.js"></script>
+  <script src="js/login.js"></script>
+
+</html>
